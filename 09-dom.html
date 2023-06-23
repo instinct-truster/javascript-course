@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- DOM "document object model" is another built-in object feature of JS. -->
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <button>hello</button>
+    <button class="js-button">Second button</button>
+
+    <script>
+      console.log(document.querySelector("button").innerHTML);
+      document.querySelector("button").innerHTML = "Changed";
+      // Gets FIRST <button> element from webpage.
+      // "body" would access the first <body> element from page.
+      // Every HTML <element> has a property "innerHTML"
+      // to access a SECOND or specific button, use a "class attribute" (adds a label) and access that.
+
+      console.log(document.querySelector(".js-button"));
+      // Uses "class selector" dot notation access like css.
+      // Don't forget the "quotation marks"
+      // Standard tagging/naming uses "js-" in front of class name to indicate it is being used in JS.
+      // Ojects are "values" and thus can be saved inside of "variables".
+      const buttonElement = document.querySelector("js-button");
+      console.log(buttonElement);
+      // When naming, standard to add "Elem" or "Element" at ending of variable name to indicate HTML element inside.
+
+      /*
+      console.log(document.title);
+      document.title = "Changed";
+
+      console.log(document.body);
+      console.log(typeof document.body);
+      // Important that we can have HTML elements INSIDE JavaScript.
+      // The DOM combines JS and HTML together. (JS controls webpage.)
+      // When inside, the HTML element is converted into JS object, and thus can have properties of its own.
+
+      console.log(document.body.innerHTML);
+      // Access to AND ability to change the HTML.
+      // document.body.innerHTML = "changed";
+
+      document.body.innerHTML = "<button>Good Job!</button>";
+
+      // document.querySelector() Lets us access ANY ELEMENT from the webpage and put it inside JS.
+
+      /*
+      document.body.innerHTML = "hello";
+      // removes everything on page (body) and replaces it with 'hello'
+      // "document" = built-in JS object
+      // ".body" = dot notation access to property(object) "body".
+      // ".innerHTML" = dot notation access to property of body.
+
+      document.title = "Good job!";
+      // document object "linked to webpage" and changes title.
+      */
+    </script>
+  </body>
+</html>

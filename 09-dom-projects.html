@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- Process for JS: 1) Fiqure out what steps we need. (algorithm)  2) Convert these steps into code. -->
+<html>
+  <head>
+    <title>DOM Projects</title>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button
+      onclick="
+      subscribe()      
+      "
+      class="js-subscribe-button">
+      Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+
+    <input
+      placeholder="Cost of order"
+      class="js-cost-input"
+      onkeydown="handleCostKeydown(event)" />
+
+    <!-- "event is another JS-provided object" -->
+
+    <!-- "event" doesn't exist inside our function, so we use a "parameter" to access and insert it. 
+    
+    To put a value into a function, we can use a "parameter."-->
+
+    <!-- clicks, keydowns (and many more) => events
+      onclick, onKeydown => event listeners (Keydown = one word) -->
+
+    <button
+      onclick="
+    calculateTotal()
+    
+    ">
+      Calculate
+    </button>
+
+    <p class="js-total-cost"></p>
+
+    <!-- Be sure NOT to have ANY extra spaces or lines if using "innerHTML" to ensure a match. Using "innerText" is a nice work-around to solve this potential problem. -->
+
+    <!-- For "clean code" we create a function and cut-and-paste most of what he had inside the button tag. -->
+    <script>
+      // String(25);
+      // console.log("25" - 5); (worked subtracting)
+      // console.log("25" + 5); (failed adding)
+      // Type Coersion again, but do NOT do math with strings, convert to Number().
+
+      // The "window" Built-in JS object represents the web browswer.
+      window.document;
+      window.console.log("window");
+      window.alert;
+      // JS automatically adds "window" to the methods on its own, so we can just use "document", etc.
+
+      function handleCostKeydown(event) {
+        if (event.key === "Enter") {
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector(".js-cost-input"); // Don't forget the "." dot notation.
+        let cost = Number(inputElement.value);
+        console.log(cost);
+
+        // Be aware of "Type Coersion" where JS converts to string. When we get values from the DOM, it will be a string, so we could use the "Number()" JS function to convert back to number.
+
+        if (cost < 40) {
+          cost = cost + 10;
+          // console.log(cost);
+          // console.log(typeof cost);
+        }
+
+        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
+      }
+
+      function subscribe() {
+        const buttonElement = document.querySelector(".js-subscribe-button");
+
+        if (buttonElement.innerHTML === "Subscribe") {
+          buttonElement.innerHTML = "Subscribed";
+        } else {
+          buttonElement.innerHTML = "Subscribe";
+        }
+      }
+    </script>
+  </body>
+</html>
