@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Functions</title>
+  </head>
+  <body>
+    <!-- Functions are values and can be saved in variables. -->
+    <script>
+      // function greeting() {
+      //   console.log("hello");
+      // }
+      // greeting(); // needs to be called.
+
+      // const num = 2;
+      // const function1 = function greeting() {
+      //   console.log("hello2");
+      // };
+
+      // console.log(function1);
+      // console.log(typeof function1);
+      // function1();
+
+      // The above code can be cleaned up some below using "anonymous function". In JS, as long as there is a way to access a function (like using the variable above), the function name is not needed.
+
+      const num = 2;
+      const function1 = function () {
+        // anonymous
+        console.log("hello2");
+      };
+
+      console.log(function1);
+      console.log(typeof function1);
+      function1();
+
+      // the code below...
+      //function greeting() {
+      //  console.log("hello");
+      //}
+
+      // is actually a shortcut for behind the scenes...
+      //var greeting = function () {
+      //  console.log("hello");
+      //};
+
+      // the way we write code like the top example gives us two advantages. 1. Easier to read  2. HOISTING (calling a function before creating that function in code.) ***hoisting does NOT work when we create our function and save it in a variable.
+
+      // Method => a function saved inside an object.
+
+      const object1 = {
+        num: 2,
+        fun: function () {
+          console.log("hello3");
+        },
+      };
+      object1.fun();
+
+      // What else can we do with a value? (we can pass a value into a function)
+
+      function display(param) {
+        console.log(param);
+      }
+      display(2);
+
+      // We can also pass a function into a function...
+
+      function run(param) {
+        param();
+      }
+      run(function () {
+        // called a "Callback" function
+        console.log("hello4");
+      });
+
+      //Let's apply this to a common practical example using the "Built-in" funtion "setTimeout()" which allows us to run a function some time in the future.
+
+      setTimeout(function () {
+        console.log("timeout");
+        console.log("timeout2");
+      }, 3000);
+
+      // the second parameter (after the comma after the function) uses milliseconds. 3000 = 3000ms = 3 seconds. It will self "call" the function after waiting 3 seconds.
+
+      // This concept is known as "ASYNCHRONOUS CODE". (will NOT wait for a line of code to finish before going to the next line od code.)
+
+      console.log("next line");
+
+      // The "setTimeout()" function sets up a timer, but doesn't actually wait the three seconds. It sets the timer and immediately continues to the next line of code.
+
+      // "SYNCHRONOUS CODE" on the other hand WILL WAIT for one line of code to finish before going to the next line of code. All of the code we have written in this course (up until this) has been synchronous, including the code "inside the function" of the asynchronous code.
+
+      // The advantage of "setTimeout()" asynchronous code is it doesn't block our code for 3 seconds. It just sets up a timer and moves on. (similar to setting a digital alarm.)
+
+      // Another "Built-in" function is "setInterval()" which operates similar to "setTimeout()" It takes in two (comma-separated) parameters. 1. A function we want to run in the future, and 2. the time to wait.
+
+      // setInterval(function () {
+      //   console.log("inverval");
+      // }, 3000);
+
+      // console.log("next line 2");
+
+      // The above example gets the point across, but creates an infinite timer, so I commented it out.
+
+      //*Another way to loop through an array is the ".forEach()" method. This is the preferred way to loop through an array.*
+
+      ["make dinner", "wash dishes", "watch youtube"].forEach(function (
+        value,
+        index
+      ) {
+        if (value === "wash dishes") {
+          // works like "continue;"
+          return;
+        }
+        console.log(index);
+        console.log(value);
+      });
+
+      // ".forEach()" loops do NOT have the skip feature called "continue" but can do the same thing with a return statement, like above, if we wanted to skip/not include "wash dishes"
+
+      // ".forEach()" loops also have a hard time with "break", so if you need to use break, it is better to use a "for" loop instead.
+    </script>
+  </body>
+</html>
