@@ -4,8 +4,33 @@
     <title>Advanced Functions</title>
   </head>
   <body>
+    <!-- *** ".addEventListener()" *** -->
+    <!-- Every HTML element has a method called ".addEventListener()" which lets us run some code when we interact with the element. To use ".addEventListener", first we are going to get this button below and put it into our JS using "document.querySelector()" -->
+    <button onclick="" class="js-button">Click</button>
     <!-- Functions are values and can be saved in variables. -->
     <script>
+      const buttonElement = document.querySelector(".js-button"); // (don't forget the dot)
+      buttonElement.addEventListener("click", () => {
+        console.log("click");
+      });
+
+      // ".addEventListener()" has two "comma-separated" parameters. 1. event (to listen for). (The way to find these event listener "event names" is to look at the attribute being used and use the word that comes after "on" such as "click" for "onclick", "keydown" for "onkeydown", etc.) 2. a function we want to run.)
+
+      // The above code with button using ".addEventListener()" does the same thing as the "onclick" attribute does, but has some added benefits. 1. Allows for MULTIPLE event listeners for one event.  2. We can REMOVE an event listener, using a method called ".removeEventListener()".
+
+      // buttonElement.removeEventListener("click", eventListener);
+
+      // ".removeEventListener()" also has two "comma-separated" parameters. 1. event  2. The function we want to remove. (to allow access, copy the function we want to remove (the part that comes after the comma) into a variable, then place that variable into the second parameter.)
+
+      const eventListener = () => {
+        console.log("click2");
+      };
+      buttonElement.addEventListener("click", eventListener);
+
+      // Best practice is to use ".addEventListener()" instead of "onclick="".
+
+      // end.
+
       // function greeting() {
       //   console.log("hello");
       // }
@@ -117,6 +142,99 @@
       // ".forEach()" loops do NOT have the skip feature called "continue" but can do the same thing with a return statement, like above, if we wanted to skip/not include "wash dishes"
 
       // ".forEach()" loops also have a hard time with "break", so if you need to use break, it is better to use a "for" loop instead.
+
+      // REGULAR FUNCTION
+
+      const regularFunction = function (param, param2) {
+        console.log("hello");
+        return 5;
+      };
+      regularFunction();
+
+      // ** ARROW FUNCTION **
+
+      const arrowFunction = (param, param2) => {
+        console.log("hello");
+        return 5;
+      };
+      arrowFunction();
+
+      // Differences with arrow functions. If using only ONE parameter, you do NOT need to use parenthesis around "(param)" in the code below. (VSCode auto formats them back in by default.)
+
+      const oneParam = (param) => {
+        console.log(param + 1);
+      };
+      oneParam(2);
+
+      // When an arrow function only has one line, you can put it all on the same line and remove the optional "curly brackets" and also remove the "return" as it is all implied. This...
+
+      const oneLine = () => {
+        return 2 + 3;
+      };
+      console.log(oneLine());
+
+      // ...becomes this...
+
+      const oneLine2 = () => 2 + 3;
+      console.log(oneLine2());
+
+      // Using the code from above, removing the word "function" and adding arrow function...
+
+      ["make dinner", "wash dishes", "watch youtube"].forEach(
+        (value, index) => {
+          if (value === "wash dishes") {
+            return;
+          }
+          console.log(index);
+          console.log(value);
+        }
+      );
+
+      // When passing a fuction into another function, use arrow functions for improved readability.
+
+      // Using arrow functions inside an object...
+
+      const object2 = {
+        method: () => {},
+      };
+
+      // Objects already have a shortcut way of writing code for functions called the "Shorthand Method" Syntax. (and considered easier to read)
+
+      // method() {}; (removing colon, space, and arrow)
+
+      // ** Two more Array Methods: ".filter()" and ".map()" **
+      // Create a copy on an array with all negative numbers removed.
+
+      console.log(
+        [1, -3, 5].filter((value, index) => {
+          // if (value >= 0) {
+          //   return true;
+          // } else {
+          //   return false;
+          // }
+
+          // a shorter way to write this is...
+          return value >= 0;
+        })
+      );
+
+      // ".filter()" 1. Creates a new array []  2. If inner function returns true, => puts value in new array. 3. If inner function returns false => value NOT put into new array.
+
+      // ** ".map()" 1. Creates a new array []  2. Whatever we return will be added to new array. (it transforms an array into another array)
+
+      // We want to make a copy of array with each number doubled.
+
+      console.log(
+        [1, 1, 3].map((value, index) => {
+          return value * 2;
+        })
+      );
+
+      // Here is the shortened syntax when only dealing with one "line of code".
+
+      console.log([1, 1, 3].map((value) => value * 2));
+
+      // ** Closure ** If a function has access to a value, it will always have access to that value. The value gets packaged together (enclosed) with the function.
     </script>
   </body>
 </html>

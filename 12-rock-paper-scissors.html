@@ -7,16 +7,18 @@
   <body>
     <p class="title">Rock Paper Scissors</p>
 
-    <button onclick="playGame('rock')" class="move-button">
+    <!-- Coming back in and changing onclick="" to .addEventListener(). Create a new (space-separated) "js-rock-button" class to target button first. -->
+
+    <button class="move-button js-rock-button">
       <img src="/images/rock-emoji.png" class="move-icon" />
     </button>
     <!-- Replace the text "Rock" with the desired image. Accessing images organized in folders is called using "filepaths" -->
 
-    <button onclick="playGame('paper')" class="move-button">
+    <button class="move-button js-paper-button">
       <img src="/images/paper-emoji.png" class="move-icon" />
     </button>
 
-    <button onclick="playGame('scissors')" class="move-button">
+    <button class="move-button js-scissors-button">
       <img src="/images/scissors-emoji.png" class="move-icon" />
     </button>
 
